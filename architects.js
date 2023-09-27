@@ -61,28 +61,28 @@ hamburger.addEventListener('click',()=>{
 
 
 
-const main = document.createElement('main');
-main.classList.add('main-container');
+// const main = document.createElement('main');
+// main.classList.add('main-container');
 
-main.innerHTML =
-`
-<div class="first-div">
-<div class="full-team">
-<div class="team-img"><img src="./images/team1.png" alt=""></div>
-<div class="team-img"><img src="./images/team2.png" alt=""></div>
-<div class="team-img"><img src="./images/team3.png" alt=""></div>
-<div class="team-img"><img src="./images/team4.png" alt=""></div>
-</div>
-<div class="feature-info">
-<div class="feature-info-detail">
-    <h2 class="feature-title">Quick list <strong>of Our</strong> <br> <span>Features</span> </h2>
-    <p class="feature-description">An architect is a person who plans, designs and oversees the
-      construction of buildings.To practice architecture means to provide services in connection
-      with the design of buildings and the space within the site surrounding. </p>
-    <button class="explore-btn2">Explore More</button>
-</div>
-</div>
-</div>
-`
+// main.innerHTML =
+// `
+// <div class="first-div">
+// <div class="full-team">
+// <div class="team-img"><img src="./images/team1.png" alt=""></div>
+// <div class="team-img"><img src="./images/team2.png" alt=""></div>
+// <div class="team-img"><img src="./images/team3.png" alt=""></div>
+// <div class="team-img"><img src="./images/team4.png" alt=""></div>
+// </div>
+// <div class="feature-info">
+// <div class="feature-info-detail">
+//     <h2 class="feature-title">Quick list <strong>of Our</strong> <br> <span>Features</span> </h2>
+//     <p class="feature-description">An architect is a person who plans, designs and oversees the
+//       construction of buildings.To practice architecture means to provide services in connection
+//       with the design of buildings and the space within the site surrounding. </p>
+//     <button class="explore-btn2">Explore More</button>
+// </div>
+// </div>
+// </div>
+// `
 
-body.appendChild(main);
+// body.appendChild(main);
