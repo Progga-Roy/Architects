@@ -86,3 +86,95 @@ hamburger.addEventListener('click',()=>{
 // `
 
 // body.appendChild(main);
+
+
+
+const section = document.createElement('section')
+const h1 = document.createElement('h1')
+h1.classList.add('title')
+h1.innerHTML =`Our <span class="terms">Teams</span>`
+body.appendChild(h1)
+section.classList.add('container')
+section.innerHTML = `
+<div class="slideshow-container">
+<div class="mySlides fade">
+    <div class="numberText"> 1/ 6</div>
+    <img src="./images/Pic1.jpg" alt="">
+    <div class="text">Caption One</div>
+</div>
+
+<div class="mySlides fade">
+    <div class="numberText"> 2/ 6</div>
+    <img src="./images/Blueprints.jpg" alt="">
+    <div class="text">Caption Two</div>
+</div>
+
+<div class="mySlides fade">
+    <div class="numberText"> 3/ 6</div>
+    <img src="./images/howtochoossearchitect_750xx1697-956-0-0.jpg" alt="">
+    <div class="text">Caption Three</div>
+</div>
+
+<div class="mySlides fade">
+    <div class="numberText"> 4/ 6</div>
+    <img src="./images/HRqk9KwpB58oBCxkiHWPih.jpg" alt="">
+    <div class="text">Caption Four</div>
+</div>
+<div class="mySlides fade">
+    <div class="numberText"> 5/ 6</div>
+    <img src="./images/remodelling-zirmunai.jpg" alt="">
+    <div class="text">Caption Five</div>
+</div>
+<div class="mySlides fade">
+    <div class="numberText"> 6/ 6</div>
+    <img src="./images/team-v2.jpg" alt="">
+    <div class="text">Caption Six</div>
+</div>
+<a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+
+</div>
+`
+const div2 = document.createElement('div')
+div2.classList.add('images')
+div2.innerHTML = `
+<a class="imageLink activeImage" onclick="currentSlide(1)"><img class="clickableImage" src="./images/Pic1.jpg" alt="Image 1"></a>
+    <a class="imageLink activeImage" onclick="currentSlide(2)"><img class="clickableImage" src="./images/Blueprints.jpg" alt="Image 2"></a>
+    <a class="imageLink activeImage" onclick="currentSlide(3)"><img class="clickableImage" src="./images/howtochoossearchitect_750xx1697-956-0-0.jpg"  alt="Image 3"></a>
+    <a class="imageLink activeImage" onclick="currentSlide(4)"><img class="clickableImage" src="./images/HRqk9KwpB58oBCxkiHWPih.jpg" alt="Image 4"></a>
+    <a class="imageLink activeImage" onclick="currentSlide(5)"><img class="clickableImage" src="./images/remodelling-zirmunai.jpg" alt="Image 5"></a>
+    <a class="imageLink activeImage" onclick="currentSlide(6)"><img class="clickableImage" src="./images/team-v2.jpg" alt="Image 6"></a>
+
+`
+body.appendChild(section)
+body.appendChild(div2)
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  slideIndex += n;
+  showSlides(slideIndex);
+}
+
+function currentSlide(n) {
+  slideIndex = n;
+  showSlides(slideIndex);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) { slideIndex = 1; }    
+  if (n < 1) { slideIndex = slides.length; }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slides[slideIndex-1].style.display = "block";
+}
+// setInterval(() => {
+//   plusSlides(1);
+// }, 2500);
+    
+
+
