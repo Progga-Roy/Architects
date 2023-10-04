@@ -19,6 +19,13 @@ nav.innerHTML =
     </li>
     <li class="nav-item">
         <a href="#" class="nav-link">Blog</a>
+     </li>   
+    <li class="nav-item">
+    <a href="#" class="nav-link"><i class="fa-solid fa-cart-shopping"></i> <span id="cart-item"></span>
+</a>
+
+     </li>   
+    
 </ul>
 <div class="hamburger">
     <span class="bar"></span>
@@ -89,7 +96,7 @@ exploreBtn.addEventListener('click', () => {
         <p class="brand-name">${brandName}</p?
         </br>
         <p class="brand-detail">Our website provides a platform for a brand new group of architects to showcase their 
-        Projectand connect with potential clients. We believe in innovative and sustainable design solutions.</p>
+        Project and connect with potential clients. We believe in innovative and sustainable design solutions.</p>
         
         `;
     modal.style.display = 'block'
@@ -189,7 +196,7 @@ const cardObject = [
     }
     return icon;
   }
-
+const cart = [];
 const newSection = document.createElement('section');
 // newSection.classList.add('card-container');
 const cardHeading = document.createElement('h1')
@@ -209,17 +216,34 @@ cardObject.forEach(singleCard => {
  <h3>${singleCard.name}</h3>
  <p>${singleCard.cost} $</p>
  <div class="btnAndRating">
- <button class="buy-project-btn">Buy Project</button>
+ <button id=${singleCard.id} class="buy-project-btn" >Buy Project</button>
  <h4 class="rating">${getRating(singleCard.rating)}</h4>
  </div>
 </div>
     `
     cardContainer.appendChild(card)
 });
+
 newSection.appendChild(cardContainer)
 body.appendChild(newSection)
 
+const cardContents = document.querySelectorAll('.card-content')
+for (const cardContent of cardContents) {
+    const btn = cardContent.querySelector('.buy-project-btn')
+     btn.addEventListener('click',()=>{
+ const selectedItem = cardObject.find(c=>c.id === Number(btn.id))
 
+//  console.log(typeof(btn.id),selectedItem)
+ if(!cart.includes(selectedItem)){
+    cart.push(selectedItem)
+ }
+ else{
+    alert('Card already has been added')
+ }
+ document.getElementById('cart-item').innerText = cart.length
+})
+
+}
 
 
 // slider
