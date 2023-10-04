@@ -8,8 +8,8 @@ nav.classList.add('nav-bar')
 nav.innerHTML =
     ` <a href="#" class="logo">Architects</a>
 <ul class="nav-menu">
-    <li class="nav-item">
-        <a href="#" class="nav-link">Home</a>
+    <li class="nav-item" >
+        <a href="#" id="home" class="nav-link">Home</a>
     </li>
     <li class="nav-item">
         <a href="#" class="nav-link">About</a>
@@ -21,9 +21,7 @@ nav.innerHTML =
         <a href="#" class="nav-link">Blog</a>
      </li>   
     <li class="nav-item">
-    <a href="#" class="nav-link"><i class="fa-solid fa-cart-shopping"></i> <span id="cart-item"></span>
-</a>
-
+    <a href="#" class="nav-link"><i class="fa-solid fa-cart-shopping"></i> <span id="cart-item"></span></a>
      </li>   
     
 </ul>
@@ -198,12 +196,12 @@ const cardObject = [
   }
 const cart = [];
 const newSection = document.createElement('section');
-// newSection.classList.add('card-container');
+newSection.classList.add('newSection');
 const cardHeading = document.createElement('h1')
-cardHeading.classList.add('title')
+cardHeading.classList.add('title2')
 const cardContainer = document.createElement('div')
 cardContainer.classList.add('card-container')
-cardHeading.innerHTML = `Our  <span class="terms">Works</span>`
+cardHeading.innerHTML = `Our  <span class="works">Works</span>`
 newSection.appendChild(cardHeading)
 cardObject.forEach(singleCard => {
     const card = document.createElement('div');
@@ -243,11 +241,70 @@ for (const cardContent of cardContents) {
  document.getElementById('cart-item').innerText = cart.length
 })
 
+
 }
+document.querySelector('#cart-item').addEventListener('click',()=>{
+    document.querySelector('.header').style.backgroundColor = '#ddd'
+    document.querySelector('.header').style.height = '100px'
+    document.querySelector('.banner-div').style.display = 'none'
+    document.querySelector('.newSection').style.display = 'none'
+    document.querySelector('.section').style.display = 'none'
+    document.querySelector('.images').style.display = 'none'
+    document.querySelector('.title').style.display = 'none' 
+    document.body.style.backgroundColor = '#ddd'
+    const cartDiv = document.createElement('div')
+    const cartTitle = document.createElement('h1')
+    cartTitle.classList.add('cartTitle')
+    cartTitle.innerHTML =`Selected <span class="items">Items</span>`
+ 
+    cartDiv.classList.add('cart-container');
+ 
+    cartDiv.innerHTML = '';
+    cartDiv.appendChild(cartTitle)
+   cart.forEach(singleCard => {
+       cartDiv.innerHTML += `
+        <div class="cart-card">
+        <div class="cart-img"> <img src="${singleCard.image}" alt="image"> </div>
+            <div class="card-content">
+                <h3>${singleCard.name}</h3>
+                <p id="${singleCard.id}">${singleCard.cost} $</p>
+            </div>
+            <div class="btn-div">
+                <button class="minus" >-</button>
+                <input type="number" class="value" value='1' />
+                <button class="plus">+</button>
+            </div>
+        </div>
+    `;
+   
+    });
+    if(document.querySelector('.cart-container')){
+        document.querySelector('.cart-container').remove();
+    }
+    body.appendChild(cartDiv);
+   
+
+    document.getElementById('home').addEventListener('click', () => {
+    document.querySelector('.header').style.backgroundColor = '#FFF4E7'
+    document.querySelector('.header').style.height = '1100px'
+    document.querySelector('.banner-div').style.display = 'block'
+    document.querySelector('.newSection').style.display = 'block'
+    document.querySelector('.section').style.display = 'block'
+    document.querySelector('.images').style.display = 'block'
+    // document.querySelector('.images').style.alignItems = 'center'
+    document.querySelector('.title').style.display = 'block'
+        document.querySelector('.cart-container').style.display = "none";
+        document.querySelector('.card-container').style.display = "grid";
+    })
+
+   
+
+})
 
 
 // slider
 const section = document.createElement('section')
+section.classList.add('section')
 const h1 = document.createElement('h1')
 h1.classList.add('title')
 h1.innerHTML = `Our <span class="terms">Teams</span>`

@@ -13,6 +13,7 @@
     background: #FFF4E7;
     height: 1100px;
     /* margin: 0 12%; */
+
 }
 
 .nav-bar {
@@ -20,7 +21,6 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 12%;
-
 
 }
 
@@ -43,7 +43,7 @@
 .nav-item .nav-link {
     font-size: 18px;
     color: #131313;
-    transition: 0.6s ease-in-out;
+    /* transition: 0.6s ease-in-out; */
 
 }
 
@@ -196,45 +196,57 @@ span {
     letter-spacing: 1px;
 } */
 /************************ card**************************/
-.card-container{
+.title2{
+    text-align: center;
+}
+.card-container {
     max-width: 1000px;
     margin: 3% auto;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
-.card{
+
+.card {
     width: 300px;
-    height:410px;
+    height: 410px;
     border: 2px solid #FF900E;
     background-color: #eee;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     overflow: hidden;
 }
-.card .image-div{
+
+.card .image-div {
     width: 300px;
-    height:280px;
+    height: 280px;
     margin: 0 auto;
 }
-.card .image-div img{
+
+.card .image-div img {
     width: 100%;
-    height:100%;
+    height: 100%;
     /* padding: 5px 5px; */
     border-radius: 0px 5px 5px 0px;
     object-fit: cover;
 }
-.card .card-content{
-    margin-top:15px ;
+
+.card .card-content {
+    margin-top: 15px;
     text-align: center;
 }
-.card-content h3{
+
+.card-content h3 {
     text-transform: uppercase;
+    color: #131313;
 }
-.card-content p{
-    margin-top: 7px ;
+
+.card-content p {
+    margin-top: 7px;
+    color: #131313;
 }
-.card-content .buy-project-btn{
+
+.card-content .buy-project-btn {
     padding: 10px 16px;
     margin-top: 7px;
     background: #FF900E;
@@ -247,28 +259,99 @@ span {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
     transition: 0.3s ease-in-out;
 }
-.card-content .buy-project-btn:hover{
-    
+
+.card-content .buy-project-btn:hover {
+
     background: #efac60;
     color: white;
-    
+
 }
-.btnAndRating{
+
+.btnAndRating {
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
     padding: 5px;
 
 }
-.btnAndRating .rating{
+
+.btnAndRating .rating {
     color: #FF900E;
     text-shadow: 0px 5px 12px rgba(0, 0, 0, 0.5);
     cursor: pointer;
 }
 
+/***********************.cart-container *****************/
+
+.cartTitle{
+    color: #FF900E;
+}
+.cart-container {
+    /* max-width: 450px; */
+    max-width: 500px;
+
+    height: 80px;
+
+    height: auto;
+    margin: 6% auto;
+}
+
+.cart-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 15px;
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.356);
+
+}
+
+.cart-card .cart-img {
+    width: 100px;
+    height: 100px;
+    padding: 5px 5px;
+
+}
+
+.cart-card .cart-img img {
+    width: 100%;
+    height: 100%;
+
+}
+
+.btn-div {
+    padding: 10px;
+}
+
+.btn-div .minus,
+.plus {
+    padding: 10px;
+    border: none;
+    outline: 0;
+    cursor: pointer;
+    background-color: #FF900E;
+    color: #eee;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.btn-div .minus:hover,
+.plus:hover {
+    color: black;
+
+}
+
+.btn-div .value {
+    width: 60px;
+    height: 30px;
+
+}
 
 /************************ slider ************************/
-.title {
+.title,.title2,.cartTitle{
     text-align: center;
     margin-top: 5%;
     color: #131313;
@@ -277,8 +360,10 @@ span {
 
 }
 
-.title .terms {
+
+.title .terms ,.works,.items {
     color: #FF900E;
+    
 }
 
 .slideshow-container {
