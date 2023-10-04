@@ -5,8 +5,8 @@ const header = document.createElement('header')
 header.classList.add('header')
 const nav = document.createElement('nav')
 nav.classList.add('nav-bar')
-nav.innerHTML = 
-` <a href="#" class="logo">Architects</a>
+nav.innerHTML =
+    ` <a href="#" class="logo">Architects</a>
 <ul class="nav-menu">
     <li class="nav-item">
         <a href="#" class="nav-link">Home</a>
@@ -31,8 +31,8 @@ header.appendChild(nav)
 const div = document.createElement('div')
 div.classList.add('banner-div')
 div.innerHTML =
-`<div class="banner-info">
-<h1>Brand New Group  </br>  of Architects </h1>
+    `<div class="banner-info">
+<h1 class="brand-heading">Brand New Group  </br>  of Architects </h1>
 <p>There are many variations of passages of Lorem Ipsum available, but the majority
 have suffered alteration in some form, </br> by injected humour, or randomized words which don't look even</p>
 <button class="explore-btn">Explore More</button>
@@ -48,18 +48,63 @@ body.appendChild(header)
 const hamburger = document.querySelector('.hamburger')
 const navMenu = document.querySelector('.nav-menu')
 
-hamburger.addEventListener('click',()=>{
+hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active')
     navMenu.classList.toggle('active')
-    
+
 })
+
 //  // control hamburger menubar clicking any nav link
 // document.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click',()=>{
 //     hamburger.classList.remove('active')
 //     navMenu.classList.remove('active')
 // }));
 
+const modal = document.createElement('div')
+modal.classList.add('modal-container')
+modal.innerHTML =
+    `
+<div class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h3>About Our Works</h3>
+            </div>
+            <div class="modal-body">
+            <button class="save">Save</button>
+            <button class="change">Changes</button>
+            
+            </div>
+        </div>
+    </div>
+`
+body.appendChild(modal)
+const exploreBtn = document.querySelector('.explore-btn')
 
+exploreBtn.addEventListener('click', () => {
+    const brandName = exploreBtn.parentElement.querySelector('.brand-heading').innerText;
+    const modalBody = document.querySelector('.modal-body')
+    modalBody.innerHTML =
+        `
+        <p class="brand-name">${brandName}</p?
+        </br>
+        <p class="brand-detail">Our website provides a platform for a brand new group of architects to showcase their 
+        Projectand connect with potential clients. We believe in innovative and sustainable design solutions.</p>
+        
+        `;
+    modal.style.display = 'block'
+})
+
+const closeBtn = document.querySelector('.modal .close')
+closeBtn.addEventListener('click', () => {
+    modal.style.display = "none"
+})
+
+window.addEventListener('click', event => {
+    if (event.target == modal) {
+        modal.style.display = "none"
+    }
+})
 
 // const main = document.createElement('main');
 // main.classList.add('main-container');
@@ -89,10 +134,99 @@ hamburger.addEventListener('click',()=>{
 
 
 
+// Projectsection
+
+const cardObject = [
+    {
+        id: 1,
+        name: 'Project 1',
+        image: './images/lifestyle.jpg',
+        rating: 2,
+        cost : 2200,
+    },
+    {
+        id: 2,
+        name: 'Project 2',
+        image: './images/a5.jpg',
+        rating: 4,
+        cost:2010
+    },
+    {
+        id: 3,
+        name: 'Project 3',
+        image: './images/a3.jpg',
+        rating: 3,
+        cost:1000
+    },
+    {
+        id: 4,
+        name: 'Project 4',
+        image: './images/a4.jpg',
+        rating: 4,
+        cost:2545
+    },
+    {
+        id: 5,
+        name: 'Project 5',
+        image: './images/part-building-made-white-pieces-metal-going-top-each-other.jpg',
+        rating: 2,
+        cost:1900
+    },
+    {
+        id: 6,
+        name: 'Project 6',
+        image: './images/a6.jpg',
+        rating: 5,
+        cost:1580
+    }
+  ];
+  let starIcon = '<i class="fa-solid fa-star"></i>'
+  const getRating =(rating)=>{
+    let icon = ''
+    for (let i = 0; i <rating; i++) {
+       icon = icon+starIcon;
+        
+    }
+    return icon;
+  }
+
+const newSection = document.createElement('section');
+// newSection.classList.add('card-container');
+const cardHeading = document.createElement('h1')
+cardHeading.classList.add('title')
+const cardContainer = document.createElement('div')
+cardContainer.classList.add('card-container')
+cardHeading.innerHTML = `Our  <span class="terms">Works</span>`
+newSection.appendChild(cardHeading)
+cardObject.forEach(singleCard => {
+    const card = document.createElement('div');
+    card.classList.add('card')
+    card.innerHTML+= 
+    `<div class="image-div">
+    <img src="${singleCard.image}" alt="image">
+</div>
+<div class="card-content">
+ <h3>${singleCard.name}</h3>
+ <p>${singleCard.cost} $</p>
+ <div class="btnAndRating">
+ <button class="buy-project-btn">Buy Project</button>
+ <h4 class="rating">${getRating(singleCard.rating)}</h4>
+ </div>
+</div>
+    `
+    cardContainer.appendChild(card)
+});
+newSection.appendChild(cardContainer)
+body.appendChild(newSection)
+
+
+
+
+// slider
 const section = document.createElement('section')
 const h1 = document.createElement('h1')
 h1.classList.add('title')
-h1.innerHTML =`Our <span class="terms">Teams</span>`
+h1.innerHTML = `Our <span class="terms">Teams</span>`
 body.appendChild(h1)
 section.classList.add('container')
 section.innerHTML = `
@@ -153,28 +287,28 @@ let slideIndex = 1;
 showSlides(slideIndex);
 
 function plusSlides(n) {
-  slideIndex += n;
-  showSlides(slideIndex);
+    slideIndex += n;
+    showSlides(slideIndex);
 }
 
 function currentSlide(n) {
-  slideIndex = n;
-  showSlides(slideIndex);
+    slideIndex = n;
+    showSlides(slideIndex);
 }
 
 function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) { slideIndex = 1; }    
-  if (n < 1) { slideIndex = slides.length; }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slides[slideIndex-1].style.display = "block";
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) { slideIndex = 1; }
+    if (n < 1) { slideIndex = slides.length; }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
 }
 // setInterval(() => {
 //   plusSlides(1);
 // }, 2500);
-    
+
 
 
