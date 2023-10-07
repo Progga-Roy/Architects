@@ -147,53 +147,53 @@ const cardObject = [
         name: 'Project 1',
         image: './images/lifestyle.jpg',
         rating: 2,
-        cost : 2200,
+        cost: 2200,
     },
     {
         id: 2,
         name: 'Project 2',
         image: './images/a5.jpg',
         rating: 4,
-        cost:2010
+        cost: 2010
     },
     {
         id: 3,
         name: 'Project 3',
         image: './images/a3.jpg',
         rating: 3,
-        cost:1000
+        cost: 1000
     },
     {
         id: 4,
         name: 'Project 4',
         image: './images/a4.jpg',
         rating: 4,
-        cost:2545
+        cost: 2545
     },
     {
         id: 5,
         name: 'Project 5',
         image: './images/part-building-made-white-pieces-metal-going-top-each-other.jpg',
         rating: 2,
-        cost:1900
+        cost: 1900
     },
     {
         id: 6,
         name: 'Project 6',
         image: './images/a6.jpg',
         rating: 5,
-        cost:1580
+        cost: 1580
     }
-  ];
-  let starIcon = '<i class="fa-solid fa-star"></i>'
-  const getRating =(rating)=>{
+];
+let starIcon = '<i class="fa-solid fa-star"></i>'
+const getRating = (rating) => {
     let icon = ''
-    for (let i = 0; i <rating; i++) {
-       icon = icon+starIcon;
-        
+    for (let i = 0; i < rating; i++) {
+        icon = icon + starIcon;
+
     }
     return icon;
-  }
+}
 const cart = [];
 const newSection = document.createElement('section');
 newSection.classList.add('newSection');
@@ -206,8 +206,8 @@ newSection.appendChild(cardHeading)
 cardObject.forEach(singleCard => {
     const card = document.createElement('div');
     card.classList.add('card')
-    card.innerHTML+= 
-    `<div class="image-div">
+    card.innerHTML +=
+        `<div class="image-div">
     <img src="${singleCard.image}" alt="image">
 </div>
 <div class="card-content">
@@ -228,46 +228,46 @@ body.appendChild(newSection)
 const cardContents = document.querySelectorAll('.card-content')
 for (const cardContent of cardContents) {
     const btn = cardContent.querySelector('.buy-project-btn')
-     btn.addEventListener('click',()=>{
- const selectedItem = cardObject.find(c=>c.id === Number(btn.id))
+    btn.addEventListener('click', () => {
+        const selectedItem = cardObject.find(c => c.id === Number(btn.id))
 
-//  console.log(typeof(btn.id),selectedItem)
- if(!cart.includes(selectedItem)){
-    cart.push(selectedItem)
- }
- else{
-    alert('Card already has been added')
- }
- document.getElementById('cart-item').innerText = cart.length
-})
+        //  console.log(typeof(btn.id),selectedItem)
+        if (!cart.includes(selectedItem)) {
+            cart.push(selectedItem)
+        }
+        else {
+            alert('Card already has been added')
+        }
+        document.getElementById('cart-item').innerText = cart.length
+    })
 
 
 }
-document.querySelector('#cart-item').addEventListener('click',()=>{
+document.querySelector('#cart-item').addEventListener('click', () => {
     document.querySelector('.header').style.backgroundColor = '#ddd'
     document.querySelector('.header').style.height = '100px'
     document.querySelector('.banner-div').style.display = 'none'
     document.querySelector('.newSection').style.display = 'none'
     document.querySelector('.section').style.display = 'none'
     document.querySelector('.images').style.display = 'none'
-    document.querySelector('.title').style.display = 'none' 
+    document.querySelector('.title').style.display = 'none'
     document.body.style.backgroundColor = '#ddd'
     const cartDiv = document.createElement('div')
     const cartTitle = document.createElement('h1')
     cartTitle.classList.add('cartTitle')
-    cartTitle.innerHTML =`Selected <span class="items">Items</span>`
- 
+    cartTitle.innerHTML = `Selected <span class="items">Items</span>`
+
     cartDiv.classList.add('cart-container');
- 
+
     cartDiv.innerHTML = '';
     cartDiv.appendChild(cartTitle)
-   cart.forEach(singleCard => {
-       cartDiv.innerHTML += `
+    cart.forEach(singleCard => {
+        cartDiv.innerHTML += `
         <div class="cart-card">
         <div class="cart-img"> <img src="${singleCard.image}" alt="image"> </div>
-            <div class="card-content">
+            <div class="cart-content">
                 <h3>${singleCard.name}</h3>
-                <p id="${singleCard.id}">${singleCard.cost} $</p>
+                <p class="price" id="${singleCard.id}">${singleCard.cost} $</p>
             </div>
             <div class="btn-div">
                 <button class="minus" >-</button>
@@ -276,28 +276,40 @@ document.querySelector('#cart-item').addEventListener('click',()=>{
             </div>
         </div>
     `;
-   
+
     });
-    if(document.querySelector('.cart-container')){
+    if (document.querySelector('.cart-container')) {
         document.querySelector('.cart-container').remove();
     }
     body.appendChild(cartDiv);
-   
+     
+   document.querySelectorAll('.cart-container .cart-card').forEach((cartCard) => {
+    cartCard.querySelector('.plus').addEventListener('click',()=>{
+        const value = cartCard.querySelector('.value').value;
+        const priceId = Number(cartCard.querySelector(".card-content p").id);
+        const selectedCartItem = cart.find(c => c.id === priceId);
+        cartCard.querySelector('.value').value =  Number(value) +1;
+        cartCard.querySelector(".cart-content .price").innerText = selectedCartItem*Number(cartCard.querySelector(".value").value);
+
+        
+    })
+   });
 
     document.getElementById('home').addEventListener('click', () => {
-    document.querySelector('.header').style.backgroundColor = '#FFF4E7'
-    document.querySelector('.header').style.height = '1100px'
-    document.querySelector('.banner-div').style.display = 'block'
-    document.querySelector('.newSection').style.display = 'block'
-    document.querySelector('.section').style.display = 'block'
-    document.querySelector('.images').style.display = 'block'
-    // document.querySelector('.images').style.alignItems = 'center'
-    document.querySelector('.title').style.display = 'block'
+        document.querySelector('.header').style.backgroundColor = '#FFF4E7'
+        document.querySelector('.header').style.height = '1100px'
+        document.querySelector('.banner-div').style.display = 'block'
+        document.querySelector('.newSection').style.display = 'block'
+        document.querySelector('.section').style.display = 'block'
+        document.querySelector('.images').style.display = 'flex'
+        document.querySelector('.title').style.display = 'block'
         document.querySelector('.cart-container').style.display = "none";
         document.querySelector('.card-container').style.display = "grid";
+        document.querySelector('#cart-item').innerText = '';
+        document.body.style.backgroundColor = 'transparent'
     })
 
-   
+
 
 })
 
